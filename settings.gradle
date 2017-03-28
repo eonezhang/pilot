@@ -1,2 +1,4 @@
 rootProject.name = 'sky'
 
+include 'inventory'
+
