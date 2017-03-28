@@ -1,0 +1,10 @@
+#ignore gradle
+.gradle
+
+#ignore intellij
+.idea/
+*iml
+
+
+#ignore java target files
+*target
