@@ -4,10 +4,27 @@ buildscript {
     }
 }
 
+repositories {
+    maven {
+        name 'active-thirdparty-repo'
+        url 'http://maven.aliyun.com/nexus/content/groups/public/'
+    }
+    ivy {
+        name 'active-release-repo'
+        url 'http://nexus.dev.activenetwork.com/nexus/content/repositories'
+        layout 'pattern', {
+            artifact 'libs-releases/[organisation]/[module]/[revision]/[artifact](-[classifier])-[revision](.[ext])'
+            m2compatible = true
+        }
+    }
+}
+
 dependencies {
     compile('org.springframework:spring-context')
 
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
+
+    compile group: 'com.active.services', name: 'checkout-service', version: '1.61.2.0', classifier: 'api', ext: 'jar', transitive: false, configuration: 'runtime'
 }
